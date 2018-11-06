@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsProjectOne</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <% if !user_signed_in? %>
+      <p class = "sign_in"><%= link_to "Login", new_user_session_path %></p>
+    <% end %>
+    
+
+    <% if user_signed_in? %>
+      <a href="home">Home</a>
+      <a href="list_inst">Instructors</a>
+      <a href="list_subj">Subjects</a>
+      <a href="list_course">Courses</a>
+      <a href="search_page">Search</a>
+      <div class = "buttons">
+        <button class = "button"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></button>
+      </div> 
+    <% end %>
+
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= yield %>
+  </body>
+</html>
